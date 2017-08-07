@@ -45,19 +45,19 @@
 			<li><a data-toggle="tab" href="#menu2" ><b>Additional Details</b></a></li>
 			<li><a data-toggle="tab" href="#menu3"><b>Roommate Preferences</b></a></li>
 		  </ul>
-		  <form class="form-horizontal" method="post" name="signup" id="signup" enctype="multipart/form-data" action="signup.php">
+		  <form class="form-horizontal" method="post" name="signup" id="signup" enctype="multipart/form-data" action="index.php">
 			  <div class="tab-content">
 				<div id="home" class="tab-pane fade in active">
 				  <div class="form-group">
 						<label class="control-label col-sm-3" for="email">Email Id<span class="text-danger">*</span></label>
 						<div class="col-md-4 col-sm-9">
-								<input type="email" class="form-control" id="email" required>	 
+								<input type="email" class="form-control" id="email" name="email" required>	 
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-3" for="password">Password<span class="text-danger">*</span></label>
 						<div class="col-md-4 col-sm-9">
-							<input type="password" class="form-control" id="password" required>
+							<input type="password" class="form-control" id="password" name="password" required>
 						</div>
 					</div>
 					<div class="row">
@@ -69,14 +69,14 @@
 					<div class="form-group">
 						<label class="control-label col-sm-3" for="firstname">First Name<span class="text-danger">*</span></label>
 						<div class="col-md-4 col-sm-9">
-								<input type="text" class="form-control" id="firstname" required>
+								<input type="text" class="form-control" id="firstname"  name="firstname" required>
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label class="control-label col-sm-3" for="lastname">Last Name<span class="text-danger">*</span></label>
 						<div class="col-md-4 col-sm-9">
-							<input type="text" class="form-control" id="lastname" required>
+							<input type="text" class="form-control" id="lastname"  name="lastname" required>
 						</div>
 					</div>
 
@@ -84,13 +84,13 @@
 						<label class="control-label col-sm-3" for="gender">Gender<span class="text-danger">*</span></label>
 						<div class="col-md-4 col-sm-9">
 							<label class="radio-inline">
-								&nbsp;<input type="radio" name="optradio">Male
+								&nbsp;<input type="radio" name="gender" value="male">Male
 							</label>
 							<label class="radio-inline">
-								<input type="radio" name="optradio">Female
+								<input type="radio" name="gender" value="female">Female
 							</label>
 							<label class="radio-inline">
-								<input type="radio" name="optradio">Other
+								<input type="radio" name="gender" value="other">Other
 							</label>
 						</div>
 					</div>
@@ -99,11 +99,29 @@
 						<label class="control-label col-sm-3" for="contactno">Contact No.</label>
 						<div class="col-md-8 col-sm-9">
 							<div class="input-group">
-									<input type="tel" class="form-control" name="contactnum" id="contactnum" placeholder="Ex: 9999999999" value="">
+									<input type="tel" class="form-control" name="contactnum" id="contactnum" placeholder="Ex: 9999999999">
 									<div class="col-sm-11"></div><span class="glyphicon glyphicon-question-sign"
 									 aria-hidden="true"  data-container="body" data-toggle="tooltip" data-placement="right" title="Optional! However, there are higher chances of getting contacted when your contact numnber is shared."></span>
 									<!--<small>Your contact details will be shared only on request</small>-->
 							</div>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label class="control-label col-sm-3" for="majorself">Major</label>
+						<div class="col-md-8 col-sm-9">
+							<select  id="majorself" class="selectpicker" name="majorself">
+								<option value=""></option>
+								<option value="Computer Science">Computer Science</option>
+								<option value="Computer Engineering">Computer Engineering</option>
+								<option value="Electrical Engineering">Electrical Engineering</option>
+								<option value="Industrial Engineering">Industrial Engineering</option>
+								<option value="Civil Engineering">Civil Engineering</option>
+								<option value="Chemical Engineering">Chemical Engineering</option>
+								<option value="Structural Engineering">Structural Engineering</option>
+								<option value="Bio-Medical Engineering">Bio-Medical Engineering</option>
+								<option value="Mechanical Engineering">Mechanical Engineering</option>
+							</select>  
 						</div>
 					</div>
 
@@ -119,11 +137,11 @@
 						<label class="control-label col-sm-3" for="smokingself">Smoking</label>
 						<div class="col-md-8 col-sm-9">
 
-							<select  id="smokingself" name="myselect[]">
+							<select  id="smokingself" class="selectpicker" name="smokingself">
 									<option value=""></option>
-									<option value="1">Yes</option>
-									<option value="2">No</option>
-									<option value="3">Occasional</option>
+									<option value="Yes">Yes</option>
+									<option value="No">No</option>
+									<option value="Occasional">Occasional</option>
 							</select> 
 
 					    </div>
@@ -132,11 +150,11 @@
 					<div class="form-group">
 						<label class="control-label col-sm-3" for="drinkingself">Drinking</label>
 						<div class="col-md-8 col-sm-9">
-							<select  id="drinkingself" name="myselect[]">
+							<select  id="drinkingself"  class="selectpicker" name="drinkingself">
 									<option value=""></option>
-									<option value="1">Yes</option>
-									<option value="2">No</option>
-									<option value="3">Occasional</option>
+									<option value="Yes">Yes</option>
+									<option value="No">No</option>
+									<option value="Occasional">Occasional</option>
 							</select> 
 						</div>
 					</div>
@@ -144,11 +162,11 @@
 					<div class="form-group">
 						<label class="control-label col-sm-3" for="foodhabitsself">Food Habits</label>
 						<div class="col-md-8 col-sm-9">
-							<select  id="foodhabitsself" name="myselect[]">
+							<select  id="foodhabitsself"  class="selectpicker" name="foodhabitsself">
 									<option value=""></option>
-									<option value="1">Vegetarian</option>
-									<option value="2">Non-Vegetarian</option>
-									<option value="3">Eggetarian</option>
+									<option value="Vegetarian">Vegetarian</option>
+									<option value="Non-Vegetarian">Non-Vegetarian</option>
+									<option value="Eggetarian">Eggetarian</option>
 							</select> 
 						</div>
 					</div>
@@ -156,27 +174,46 @@
 					<div class="form-group">
 						<label class="control-label col-sm-3" for="budgetself">Budget</label>
 						<div class="col-md-8 col-sm-9">
-							<select  id="budget" name="myselect[]">
+							<select  id="budgetself"  class="selectpicker" name="budgetself">
 									<option value=""></option>
-									<option value="1">less than 200</option>
-									<option value="2">200-250</option>
-									<option value="3">250-300</option>
-									<option value="4">greater than 300</option>
+									<option value="less than 200">less than 200</option>
+									<option value="200-250">200-250</option>
+									<option value="250-300">250-300</option>
+									<option value="greater than 300">greater than 300</option>
 							</select> 
 							<span class="glyphicon glyphicon-question-sign"
 									 aria-hidden="true"  data-container="body" data-toggle="tooltip" data-placement="right" title="Individual budget"></span>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label class="control-label col-sm-3" for="nativeself">Native</label>
+						<div class="col-md-8 col-sm-9">
+							<select  id="nativeself" class="selectpicker" name="nativeself">
+								<option value=""></option>
+								<option value="Hyderabad">Hyderabad</option>
+								<option value="Chennai">Chennai</option>
+								<option value="Bangalore">Bangalore</option>
+								<option value="Coimbatore">Coimbatore</option>
+								<option value="Cochin">Cochin</option>
+								<option value="Kolkata">Kolkata</option>
+								<option value="Ahmedabad">Ahmedabad</option>
+								<option value="Delhi">Delhi</option>
+								<option value="Noida">Noida</option>
+								<option value="Chandigarh">Chandigarh</option>
+							</select>       
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label class="control-label col-sm-3" for="roommatesself">Number of Roommates</label>
 						<div class="col-md-8 col-sm-9">
-							<select  id="roommates" name="myselect[]">
+							<select  id="roommatesself" class="selectpicker" name="roommatesself">
 									<option value=""></option>
-									<option value="1">less than 2</option>
-									<option value="2">2-3</option>
-									<option value="3">4-5</option>
-									<option value="4">more than 5</option>
+									<option value="less than 2">less than 2</option>
+									<option value="2-3">2-3</option>
+									<option value="4-5">4-5</option>
+									<option value="more than 5">more than 5</option>
 							</select>
 						</div>
 					</div>
@@ -184,24 +221,24 @@
 					<div class="form-group">
 						<label class="control-label col-sm-3" for="languagesself">Languages Known</label>
 						<div class="col-md-8 col-sm-9">
-							<select  id="languages" name="myselect[]" multiple>
+							<select  id="languagesself" class="selectpicker" name="languagesself" multiple>
 								<option value=""></option>
-								<option value="1">Hindi</option>
-								<option value="2">Kannada</option>
-								<option value="3">Gujarati</option>
-								<option value="4">Marathi</option>
-								<option value="5">Tamil</option>
-								<option value="6">Malayalam</option>
-								<option value="7">Odiya</option>
-								<option value="8">Punjabi</option>
-								<option value="8">Assamese</option>
-								<option value="9">Haryanvi</option>
-								<option value="10">Kashmiri</option>
-								<option value="11">Urdu</option>
-								<option value="12">Chhattisgarhi</option>
-								<option value="13">Telugu</option>
-								<option value="14">Bengali</option>
-								<option value="15">Rajasthani</option>
+								<option value="Hindi">Hindi</option>
+								<option value="Kannada">Kannada</option>
+								<option value="Gujarati">Gujarati</option>
+								<option value="Marathi">Marathi</option>
+								<option value="Tamil">Tamil</option>
+								<option value="Malayalam">Malayalam</option>
+								<option value="Odiya">Odiya</option>
+								<option value="Punjabi">Punjabi</option>
+								<option value="Assamese">Assamese</option>
+								<option value="Haryanvi">Haryanvi</option>
+								<option value="Kashmiri">Kashmiri</option>
+								<option value="Urdu">Urdu</option>
+								<option value="Chhattisgarhi">Chhattisgarhi</option>
+								<option value="Telugu">Telugu</option>
+								<option value="Bengali">Bengali</option>
+								<option value="Rajasthani">Rajasthani</option>
 							</select>           
 						</div>
 					</div>
@@ -213,14 +250,14 @@
 				</div>
 				<div id="menu3" class="tab-pane fade">
 				  	<div class="form-group">
-						<label class="control-label col-sm-3" for="smokingprederences">Smoking</label>
+						<label class="control-label col-sm-3" for="smokingpreferences">Smoking</label>
 						<div class="col-md-8 col-sm-9">
-							<select  id="smokingprederences" name="myselect[]">
+							<select  id="smokingpreferences" class="selectpicker" name="smokingpreferences">
 									<option value=""></option>
-									<option value="1">Yes</option>
-									<option value="2">No</option>
-									<option value="3">Occasional</option>
-									<option value="4">Doesn't matter</option>
+									<option value="Yes">Yes</option>
+									<option value="No">No</option>
+									<option value="Occasional">Occasional</option>
+									<option value="Doesn't matter">Doesn't matter</option>
 							</select> 
 						</div>
 					</div>
@@ -228,12 +265,12 @@
 					<div class="form-group">
 						<label class="control-label col-sm-3" for="drinkingpreferences">Drinking</label>
 						<div class="col-md-8 col-sm-9">
-							<select  id="drinkingpreferences" name="myselect[]">
+							<select  id="drinkingpreferences" class="selectpicker" name="drinkingpreferences">
 									<option value=""></option>
-									<option value="1">Yes</option>
-									<option value="2">No</option>
-									<option value="3">Occasional</option>
-									<option value="4">Doesn't matter</option>
+									<option value="Yes">Yes</option>
+									<option value="No">No</option>
+									<option value="Occasional">Occasional</option>
+									<option value="Doesn't matter">Doesn't matter</option>
 							</select> 
 						</div>
 					</div>
@@ -241,12 +278,12 @@
 					<div class="form-group">
 						<label class="control-label col-sm-3" for="fodhabitspreferences">Food Habits</label>
 						<div class="col-md-8 col-sm-9">
-							<select  id="fodhabitspreferences" name="myselect[]">
+							<select  id="fodhabitspreferences" class="selectpicker" name="fodhabitspreferences">
 									<option value=""></option>
-									<option value="1">Vegetarian</option>
-									<option value="2">Non-Vegetarian</option>
-									<option value="3">Eggetarian</option>
-									<option value="4">Doesn't matter</option>
+									<option value="Vegetarian">Vegetarian</option>
+									<option value="Non-Vegetarian">Non-Vegetarian</option>
+									<option value="Eggetarian">Eggetarian</option>
+									<option value="Doesn't matter">Doesn't matter</option>
 							</select> 
 						</div>
 					</div>
@@ -254,18 +291,18 @@
 					<div class="form-group">
 						<label class="control-label col-sm-3" for="majorpreferences">Major</label>
 						<div class="col-md-8 col-sm-9">
-							<select  id="majorpreferences" name="myselect[]" multiple>
+							<select  id="majorpreferences" class="selectpicker" name="majorpreferences" multiple>
 								<option value=""></option>
-								<option value="1">Computer Science</option>
-								<option value="2">Computer Engineering</option>
-								<option value="3">Electrical Engineering</option>
-								<option value="4">Industrial Engineering</option>
-								<option value="5">Civil Engineering</option>
-								<option value="6">Chemical Engineering</option>
-								<option value="7">Structural Engineering</option>
-								<option value="8">Bio-Medical Engineering</option>
-								<option value="8">Mechanical Engineering</option>
-								<option value="4">Doesn't matter</option>
+								<option value="Computer Science">Computer Science</option>
+								<option value="Computer Engineering">Computer Engineering</option>
+								<option value="Electrical Engineering">Electrical Engineering</option>
+								<option value="Industrial Engineering">Industrial Engineering</option>
+								<option value="Civil Engineering">Civil Engineering</option>
+								<option value="Chemical Engineering">Chemical Engineering</option>
+								<option value="Structural Engineering">Structural Engineering</option>
+								<option value="Bio-Medical Engineering">Bio-Medical Engineering</option>
+								<option value="Mechanical Engineering">Mechanical Engineering</option>
+								<option value="Doesn't matter">Doesn't matter</option>
 							</select>       
 						</div>
 					</div>
@@ -273,19 +310,19 @@
 					<div class="form-group">
 						<label class="control-label col-sm-3" for="nativepreferences">Native</label>
 						<div class="col-md-8 col-sm-9">
-							<select  id="nativepreferences" name="myselect[]" multiple>
+							<select  id="nativepreferences" class="selectpicker" name="nativepreferences" multiple>
 								<option value=""></option>
-								<option value="1">Hyderabad</option>
-								<option value="2">Chennai</option>
-								<option value="3">Bangalore</option>
-								<option value="4">Coimbatore</option>
-								<option value="5">Cochin</option>
-								<option value="6">Kolkata</option>
-								<option value="7">Ahmedabad</option>
-								<option value="8">Delhi</option>
-								<option value="8">Noida</option>
-								<option value="8">Chandigarh</option>
-								<option value="4">Doesn't matter</option>
+								<option value="Hyderabad">Hyderabad</option>
+								<option value="Chennai">Chennai</option>
+								<option value="Bangalore">Bangalore</option>
+								<option value="Coimbatore">Coimbatore</option>
+								<option value="Cochin">Cochin</option>
+								<option value="Kolkata">Kolkata</option>
+								<option value="Ahmedabad">Ahmedabad</option>
+								<option value="Delhi">Delhi</option>
+								<option value="Noida">Noida</option>
+								<option value="Chandigarh">Chandigarh</option>
+								<option value="Doesn't matter">Doesn't matter</option>
 							</select>       
 						</div>
 					</div>
@@ -295,25 +332,25 @@
 					<div class="form-group">
 						<label class="control-label col-sm-3" for="languagespreferences">Languages Known</label>
 						<div class="col-md-8 col-sm-9">
-							<select  id="languagespreferences" name="myselect[]" multiple>
+							<select  id="languagespreferences" class="selectpicker" name="languagespreferences" multiple>
 								<option value=""></option>
-								<option value="1">Hindi</option>
-								<option value="2">Kannada</option>
-								<option value="3">Gujarati</option>
-								<option value="4">Marathi</option>
-								<option value="5">Tamil</option>
-								<option value="6">Malayalam</option>
-								<option value="7">Odiya</option>
-								<option value="8">Punjabi</option>
-								<option value="8">Assamese</option>
-								<option value="9">Haryanvi</option>
-								<option value="10">Kashmiri</option>
-								<option value="11">Urdu</option>
-								<option value="12">Chhattisgarhi</option>
-								<option value="13">Telugu</option>
-								<option value="14">Bengali</option>
-								<option value="15">Rajasthani</option>
-								<option value="4">Doesn't matter</option>
+								<option value="Hindi">Hindi</option>
+								<option value="Kannada">Kannada</option>
+								<option value="Gujarati">Gujarati</option>
+								<option value="Marathi">Marathi</option>
+								<option value="Tamil">Tamil</option>
+								<option value="Malayalam">Malayalam</option>
+								<option value="Odiya">Odiya</option>
+								<option value="Punjabi">Punjabi</option>
+								<option value="Assamese">Assamese</option>
+								<option value="Haryanvi">Haryanvi</option>
+								<option value="Kashmiri">Kashmiri</option>
+								<option value="Urdu">Urdu</option>
+								<option value="Chhattisgarhi">Chhattisgarhi</option>
+								<option value="Telugu">Telugu</option>
+								<option value="Bengali">Bengali</option>
+								<option value="Rajasthani">Rajasthani</option>
+								<option value="Doesn't matter">Doesn't matter</option>
 							</select>           
 						</div>
 					</div>
@@ -321,7 +358,7 @@
 					<div class="row">
 							<a class="btn btnPrevious col-md-1"><b>Previous</b></a>
 							<div class="col-md-2"></div>
-							<a class="btn btn-primary col-md-1" href="#"><b>Submit</b></a>
+							<input  class="btn btn-primary col-md-1" type="submit" value="Submit">
 					</div>
 				</div>
 					
@@ -336,11 +373,13 @@
 			})
 		</script>
 		<script>
-			$('#languages').selectpicker();
-            $('#budget').selectpicker();
-            $('#roommates').selectpicker();
+			$('#languagesself').selectpicker();
+            $('#budgetself').selectpicker();
+            $('#roommatesself').selectpicker();
+			$('#majorself').selectpicker();
+			$('#nativeself').selectpicker();
 			$('#languagespreferences').selectpicker();
-			$('#smokingprederences').selectpicker();
+			$('#smokingpreferences').selectpicker();
 			$('#drinkingpreferences').selectpicker();
 			$('#majorpreferences').selectpicker();
 			$('#nativepreferences').selectpicker();
