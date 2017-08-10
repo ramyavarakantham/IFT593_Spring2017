@@ -1,70 +1,13 @@
 <?php
 	include("connection.php");
-	$emailErr = $pwderr = $fNameErr = $lNameErr = $genderErr  = $budgetErr  = $roommateErr  ="";
 	
-	if(empty($_POST['email']))
-	{
-		$emailErr = "Invalid email format";
-		die(header("location:RS_Signup_Page.php?loginFailed=true&reason=password"));
-	}
-	else{
-		if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-                  $emailErr = "Invalid email format"; 
-               }
-		else{
-			$email=$_POST['email'];
-		}
-	}
-	
-	if(empty($_POST['password']))
-	{
-		$pwderr = "Password is required";
-	}
-	else{
-		$pwd=$_POST['password'];
-	}
-	
-	if(empty($_POST['firstname']))
-	{
-		$fNameErr = "Firstname is required";
-	}
-	else{
-		$fName=$_POST['firstname'];
-	}
-	
-	if(empty($_POST['lastname']))
-	{
-		$lNameErr = "Lastname is required";
-	}
-	else{
-		$lName=$_POST['lastname'];
-	}
-	
-	if(empty($_POST['gender']))
-	{
-		$genderErr = "Gender is required";
-	}
-	else{
-		$gender=$_POST['gender'];
-	}
-	
-	if(empty($_POST['budgetself']))
-	{
-		$budgetErr = "Budget is required";
-	}
-	else{
-		$budgetself=$_POST['budgetself'];
-	}
-	
-	if(empty($_POST['roommatesself']))
-	{
-		$roommateErr = "NoOfRoommates is required";
-	}
-	else{
-		$roommatesself=$_POST['roommatesself'];
-	}
-	
-	
+	$email=$_POST['email'];
+	$pwd=$_POST['password'];
+	$fName=$_POST['firstname'];
+	$lName=$_POST['lastname'];
+	$gender=$_POST['gender'];
+	$budgetself=$_POST['budgetself'];
+	$roommatesself=$_POST['roommatesself'];	
 	$smokingself=$_POST['smokingself'];
 	$drinkingself=$_POST['drinkingself'];
 	$foodhabitsself=$_POST['foodhabitsself'];
@@ -162,6 +105,6 @@
 		echo "inserted into user";
 	}
 
-	header ("refresh:10; url=RS_Signup_Page.html");
+	header ("refresh:10; url=RS_Signup_Page.php");
 
 ?>

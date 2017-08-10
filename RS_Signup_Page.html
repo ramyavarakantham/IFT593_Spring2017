@@ -214,9 +214,6 @@
 									<option value="4-5">4-5</option>
 									<option value="more than 5">more than 5</option>
 							</select>
-							<!--Code to make No of roommates field required-->
-							<span class="error"><p id="name_error"></p></span>
-
 						</div>
 					</div>
 
@@ -405,24 +402,7 @@
 				$('[data-toggle="tooltip"]').tooltip()
 			})
 		</script>
-		<!--Code to make No of roommates field required-->
-		<script>
-			document.getElementById("signup").onsubmit = function () 
-			var x = document.forms["signup"]["roommatesself"].value;
-			var submit = true;
+		
 
-			if (x == "null" || x == "") {
-				nameError = "This is a required field";
-				document.getElementById("name_error").innerHTML = nameError;
-				submit = false;
-			}
-			return submit;
-			}
-			function removeWarning() {
-				document.getElementById(this.id + "_error").innerHTML = "";
-			}
-
-			document.getElementById("roommatesself").onkeyup = removeWarning;
-		</script>
 </body>
 </html>
