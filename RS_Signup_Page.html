@@ -39,6 +39,7 @@
 	<body>
 		<div class="container" id="signupcontainer">
 		  <h2>Join us!</h2>
+		  <div class="error" style="float:right;"><span class="text-danger">* required field.</span></div>
 		  <ul class="nav nav-tabs">
 			<li class="active"><a data-toggle="tab" href="#home"><b>My Credentials</b></a></li>
 			<li><a data-toggle="tab" href="#menu1"><b>My Information</b></a></li>
@@ -51,7 +52,8 @@
 				  <div class="form-group">
 						<label class="control-label col-sm-3" for="email">Email Id<span class="text-danger">*</span></label>
 						<div class="col-md-4 col-sm-9">
-								<input type="email" class="form-control" id="email" name="email" required>	 
+								<input type="email" class="form-control" id="email" name="email" required>
+
 						</div>
 					</div>
 					<div class="form-group">
@@ -84,7 +86,7 @@
 						<label class="control-label col-sm-3" for="gender">Gender<span class="text-danger">*</span></label>
 						<div class="col-md-4 col-sm-9">
 							<label class="radio-inline">
-								&nbsp;<input type="radio" name="gender" value="male">Male
+								&nbsp;<input type="radio" name="gender" value="male" required>Male
 							</label>
 							<label class="radio-inline">
 								<input type="radio" name="gender" value="female">Female
@@ -96,13 +98,10 @@
 					</div>
 					
 					<div class="form-group">
-						<label class="control-label col-sm-3" for="contactno">Contact No.</label>
+						<label class="control-label col-sm-3" for="contactno">Contact No.<span class="text-danger">*</span></label>
 						<div class="col-md-8 col-sm-9">
 							<div class="input-group">
-									<input type="tel" class="form-control" name="contactnum" id="contactnum" placeholder="Ex: 9999999999">
-									<div class="col-sm-11"></div><span class="glyphicon glyphicon-question-sign"
-									 aria-hidden="true"  data-container="body" data-toggle="tooltip" data-placement="right" title="Optional! However, there are higher chances of getting contacted when your contact numnber is shared."></span>
-									<!--<small>Your contact details will be shared only on request</small>-->
+									<input type="tel" class="form-control" name="contactnum" id="contactnum" placeholder="Ex: 9999999999" required>
 							</div>
 						</div>
 					</div>
@@ -111,7 +110,7 @@
 						<label class="control-label col-sm-3" for="majorself">Major</label>
 						<div class="col-md-8 col-sm-9">
 							<select  id="majorself" class="selectpicker" name="majorself">
-								<option value=""></option>
+								<option value="null"></option>
 								<option value="Computer Science">Computer Science</option>
 								<option value="Computer Engineering">Computer Engineering</option>
 								<option value="Electrical Engineering">Electrical Engineering</option>
@@ -138,7 +137,7 @@
 						<div class="col-md-8 col-sm-9">
 
 							<select  id="smokingself" class="selectpicker" name="smokingself">
-									<option value=""></option>
+									<option value="null"></option>
 									<option value="Yes">Yes</option>
 									<option value="No">No</option>
 									<option value="Occasional">Occasional</option>
@@ -151,7 +150,7 @@
 						<label class="control-label col-sm-3" for="drinkingself">Drinking</label>
 						<div class="col-md-8 col-sm-9">
 							<select  id="drinkingself"  class="selectpicker" name="drinkingself">
-									<option value=""></option>
+									<option value="null"></option>
 									<option value="Yes">Yes</option>
 									<option value="No">No</option>
 									<option value="Occasional">Occasional</option>
@@ -163,7 +162,7 @@
 						<label class="control-label col-sm-3" for="foodhabitsself">Food Habits</label>
 						<div class="col-md-8 col-sm-9">
 							<select  id="foodhabitsself"  class="selectpicker" name="foodhabitsself">
-									<option value=""></option>
+									<option value="null"></option>
 									<option value="Vegetarian">Vegetarian</option>
 									<option value="Non-Vegetarian">Non-Vegetarian</option>
 									<option value="Eggetarian">Eggetarian</option>
@@ -172,10 +171,10 @@
 					</div>
 
 					<div class="form-group">
-						<label class="control-label col-sm-3" for="budgetself">Budget</label>
+						<label class="control-label col-sm-3" for="budgetself">Budget<span class="text-danger">*</span></label>
 						<div class="col-md-8 col-sm-9">
 							<select  id="budgetself"  class="selectpicker" name="budgetself">
-									<option value=""></option>
+									<option value="null"></option>
 									<option value="less than 200">less than 200</option>
 									<option value="200-250">200-250</option>
 									<option value="250-300">250-300</option>
@@ -190,7 +189,7 @@
 						<label class="control-label col-sm-3" for="nativeself">Native</label>
 						<div class="col-md-8 col-sm-9">
 							<select  id="nativeself" class="selectpicker" name="nativeself">
-								<option value=""></option>
+								<option value="null"></option>
 								<option value="Hyderabad">Hyderabad</option>
 								<option value="Chennai">Chennai</option>
 								<option value="Bangalore">Bangalore</option>
@@ -206,23 +205,26 @@
 					</div>
 
 					<div class="form-group">
-						<label class="control-label col-sm-3" for="roommatesself">Number of Roommates</label>
+						<label class="control-label col-sm-3" for="roommatesself">Number of Roommates<span class="text-danger">*</span></label>
 						<div class="col-md-8 col-sm-9">
 							<select  id="roommatesself" class="selectpicker" name="roommatesself">
-									<option value=""></option>
+									<option value="null"></option>
 									<option value="less than 2">less than 2</option>
 									<option value="2-3">2-3</option>
 									<option value="4-5">4-5</option>
 									<option value="more than 5">more than 5</option>
 							</select>
+							<!--Code to make No of roommates field required-->
+							<span class="error"><p id="name_error"></p></span>
+
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label class="control-label col-sm-3" for="languagesself">Languages Known</label>
 						<div class="col-md-8 col-sm-9">
-							<select  id="languagesself" class="selectpicker" name="languagesself" multiple>
-								<option value=""></option>
+							<select  id="languagesself"  class="selectpicker" multiple="multiple" name="languagesself[]" multiple>
+								<option value="null"></option>
 								<option value="Hindi">Hindi</option>
 								<option value="Kannada">Kannada</option>
 								<option value="Gujarati">Gujarati</option>
@@ -253,7 +255,7 @@
 						<label class="control-label col-sm-3" for="smokingpreferences">Smoking</label>
 						<div class="col-md-8 col-sm-9">
 							<select  id="smokingpreferences" class="selectpicker" name="smokingpreferences">
-									<option value=""></option>
+									<option value="null"></option>
 									<option value="Yes">Yes</option>
 									<option value="No">No</option>
 									<option value="Occasional">Occasional</option>
@@ -266,7 +268,7 @@
 						<label class="control-label col-sm-3" for="drinkingpreferences">Drinking</label>
 						<div class="col-md-8 col-sm-9">
 							<select  id="drinkingpreferences" class="selectpicker" name="drinkingpreferences">
-									<option value=""></option>
+									<option value="null"></option>
 									<option value="Yes">Yes</option>
 									<option value="No">No</option>
 									<option value="Occasional">Occasional</option>
@@ -276,10 +278,10 @@
 					</div>
 
 					<div class="form-group">
-						<label class="control-label col-sm-3" for="fodhabitspreferences">Food Habits</label>
+						<label class="control-label col-sm-3" for="foodhabitspreferences">Food Habits</label>
 						<div class="col-md-8 col-sm-9">
-							<select  id="fodhabitspreferences" class="selectpicker" name="fodhabitspreferences">
-									<option value=""></option>
+							<select  id="foodhabitspreferences" class="selectpicker" name="foodhabitspreferences">
+									<option value="null"></option>
 									<option value="Vegetarian">Vegetarian</option>
 									<option value="Non-Vegetarian">Non-Vegetarian</option>
 									<option value="Eggetarian">Eggetarian</option>
@@ -291,8 +293,8 @@
 					<div class="form-group">
 						<label class="control-label col-sm-3" for="majorpreferences">Major</label>
 						<div class="col-md-8 col-sm-9">
-							<select  id="majorpreferences" class="selectpicker" name="majorpreferences" multiple>
-								<option value=""></option>
+							<select  id="majorpreferences" class="selectpicker"  multiple="multiple" name="majorpreferences[]" multiple >
+								<option value="null"></option>
 								<option value="Computer Science">Computer Science</option>
 								<option value="Computer Engineering">Computer Engineering</option>
 								<option value="Electrical Engineering">Electrical Engineering</option>
@@ -310,8 +312,8 @@
 					<div class="form-group">
 						<label class="control-label col-sm-3" for="nativepreferences">Native</label>
 						<div class="col-md-8 col-sm-9">
-							<select  id="nativepreferences" class="selectpicker" name="nativepreferences" multiple>
-								<option value=""></option>
+							<select  id="nativepreferences" class="selectpicker" multiple="multiple"  name="nativepreferences[]" multiple>
+								<option value="null"></option>
 								<option value="Hyderabad">Hyderabad</option>
 								<option value="Chennai">Chennai</option>
 								<option value="Bangalore">Bangalore</option>
@@ -332,8 +334,8 @@
 					<div class="form-group">
 						<label class="control-label col-sm-3" for="languagespreferences">Languages Known</label>
 						<div class="col-md-8 col-sm-9">
-							<select  id="languagespreferences" class="selectpicker" name="languagespreferences" multiple>
-								<option value=""></option>
+							<select  id="languagespreferences"  class="selectpicker" multiple="multiple" name="languagespreferences[]" multiple>
+								<option value="null"></option>
 								<option value="Hindi">Hindi</option>
 								<option value="Kannada">Kannada</option>
 								<option value="Gujarati">Gujarati</option>
@@ -383,7 +385,7 @@
 			$('#drinkingpreferences').selectpicker();
 			$('#majorpreferences').selectpicker();
 			$('#nativepreferences').selectpicker();
-			$('#fodhabitspreferences').selectpicker();
+			$('#foodhabitspreferences').selectpicker();
 			$('#smokingself').selectpicker();
 			$('#drinkingself').selectpicker();
 			$('#foodhabitsself').selectpicker();
@@ -402,6 +404,25 @@
 			$(function () {
 				$('[data-toggle="tooltip"]').tooltip()
 			})
+		</script>
+		<!--Code to make No of roommates field required-->
+		<script>
+			document.getElementById("signup").onsubmit = function () 
+			var x = document.forms["signup"]["roommatesself"].value;
+			var submit = true;
+
+			if (x == "null" || x == "") {
+				nameError = "This is a required field";
+				document.getElementById("name_error").innerHTML = nameError;
+				submit = false;
+			}
+			return submit;
+			}
+			function removeWarning() {
+				document.getElementById(this.id + "_error").innerHTML = "";
+			}
+
+			document.getElementById("roommatesself").onkeyup = removeWarning;
 		</script>
 </body>
 </html>
