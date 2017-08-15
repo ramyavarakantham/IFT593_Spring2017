@@ -31,10 +31,11 @@
 		?>
 		Vacancies : <?php echo $vacancies;  ?></br>
 		<button type="button" name="view" id="<?php echo $row_group['GroupName'];?>" class="btn btn-info view_data">View Details</button>
+		<button type="button" id="join-<?php echo $row_group['GroupName'];?>" class="btn btn-primary join_group">Join group</button>
 		<?php
 		}
 		?>
-		<div id="dataModal" class="modal fade">
+		<div id="dataModal" class="modal modal-lg fade">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -44,11 +45,14 @@
 					<div class="modal-body" id="member_details">
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-primary">Join group</button>
 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 					</div>
 				</div>
 			</div> 	
+		</div>
+		<div class="alert alert-success alert-dismissable" id="joinedgroupalert" style="display:none;">
+			<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+			<div id="alertmessage"></div>
 		</div>
 		<script>
 			$(document).ready(function(){
@@ -67,5 +71,22 @@
 				});
 			});
 		</script>	
+		<script>
+			$(document).ready(function(){
+				$('.join_group').click(function(){
+					var join_group_name=$(this).attr("id");
+					var group= join_group_name.substring(5);
+					$.ajax({
+						url:"select.php",
+						method: "post",
+						data:{JoinGroup: group},
+						success: function(data){
+							$('#alertmessage').html(data);	
+						}
+					});	
+					$("#joinedgroupalert").css("display", "");
+				});
+			});
+		</script>
 	</body>
 </html>
