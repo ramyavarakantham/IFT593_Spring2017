@@ -83,8 +83,51 @@
 		$result_user_languages_p=mysqli_query($conn, $sql_user_languages_p);
 		//multiple
 		//while($row_user_languages_p=mysqli_fetch_array($result_user_languages_p))
-
+			
+		//get all users belonging to that group
+		//$query="select * from user where user_groupname='". $_POST['MyGroup']. "'";
+		$query="select * from user where user_groupname='working'";
+		//execute the member query
+		$result=mysqli_query($conn, $query);
+		$currentcount=mysqli_affected_rows($conn);
+		//get group info
+		//$querygroup="select * from user_group where GroupName='".$_POST['MyGroup']."'";
+		$querygroup="select * from user_group where GroupName='working'";
+		//execute group query
+		$resultgroup=mysqli_query($conn, $querygroup);
+		//getvalues from that group
+		$rowgroup=mysqli_fetch_array($resultgroup);
+		$vacancies=$rowgroup['MaxMembers']-$currentcount;
 		?>
+					<?php
+			if(isset($_POST['update'])){
+	$message='';
+	$fName=$_POST['fname'];
+	$lName=$_POST['lname'];
+	$gender=$_POST['gender'];
+	$contactnum=$_POST['contactnum'];
+	$major=$_POST['majorself'];
+	
+	//$quser="update user set FirstName='$fName', LastName='$lName', Gender='$gender', ContactNumber='$contactnum' where EmailId='".$_SESSION['emailId']."'";
+	$quser="update user set FirstName='$fName', LastName='$lName', Gender='$gender', ContactNumber='$contactnum' where EmailId='vishram@gmail.com'";
+	if(!mysqli_query($conn, $quser)){
+		$message.= "could not update user table";
+	}
+	//$qusermajor="update major set Major='$major' where EmailId='".$_SESSION['emailId']."'";
+	$qusermajor="update major set Major='$major' where EmailId='vishram@gmail.com'";
+	if(!mysqli_query($conn, $qusermajor)){
+		$message.="could not update major table";
+	}	
+	$message.='Basic information updated. ';
+
+	if($message=='Basic information updated. '){
+		header('Location: '.$_SERVER['REQUEST_URI']);
+	}
+	
+	 
+	
+}
+?>
 		<div class="container" style="padding-top:80px;">
 			<div class="row">
 				<div class="col-sm-3">
@@ -95,42 +138,49 @@
 				  </ul>
 				</div>
 				<div class="tab-content col-sm-6 text-center">
+				<span><?php 
+				if(isset($message) && $message != ''){
+					echo '<div class="alert alert-danger alert-dismissible">'.$message.'<button type="button" class="close close_alert" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button></div>';
+				}
+				?> </span>
 					<div class="tab-pane active" id="my_details" >
+						<div id="basic_table">
+							<table class="table">
+								<thead>
+								  <tr>
+									<th>Basic Information</th>
+								   <th style="text-align:right"><button type="button"  class="btn btn-info btn-sm edit_basic">Edit</button></th>
+								  </tr>
+								</thead>
+								<tbody>
+								  <tr>
+									<td>First Name</td>
+									<td><?php echo $row_user['FirstName']; ?></td>
+								  </tr>
+								  <tr>
+									<td>Last Name</td>
+									<td><?php echo $row_user['LastName']; ?></td>
+								  </tr>
+								  <tr>
+									<td>Gender</td>
+									<td><?php echo $row_user['Gender']; ?></td>
+								  </tr>
+								  <tr>
+									<td>Password</td>
+									<td><a href="updatepassword.php">Update Password</a></td>
+								  </tr>
+								  <tr>
+									<td>Contact Number</td>
+									<td><?php echo $row_user['ContactNumber']; ?></td>
+								  </tr>
+								  <tr>
+									<td>Major</td>
+									<td><?php echo $row_user_major['Major']; ?></td>
+								  </tr>
+								</tbody>
+							</table>
+						</div>
 						<table class="table">
-							<thead>
-							  <tr>
-								<th>Basic Information</th>
-							   <th style="text-align:right"><button type="button"  class="btn btn-info btn-sm edit_basic" >Edit</button></th>
-							  </tr>
-							</thead>
-							<tbody>
-							  <tr>
-								<td>First Name</td>
-								<td><?php echo $row_user['FirstName']; ?></td>
-							  </tr>
-							  <tr>
-								<td>Last Name</td>
-								<td><?php echo $row_user['LastName']; ?></td>
-							  </tr>
-							  <tr>
-								<td>Gender</td>
-								<td><?php echo $row_user['Gender']; ?></td>
-							  </tr>
-							  <tr>
-								<td>Password</td>
-								<td><a href="updatepassword.php">Update Password</a></td>
-							  </tr>
-							  <tr>
-								<td>Contact Number</td>
-								<td><?php echo $row_user['ContactNumber']; ?></td>
-							  </tr>
-							  <tr>
-								<td>Major</td>
-								<td><?php echo $row_user_major['Major']; ?></td>
-							  </tr>
-							</tbody>
-						</table>
-						<table class="table" id="additional">
 							<thead>
 							  <tr>
 								<th>Additional Information</th>
@@ -224,18 +274,99 @@
 						</table>
 						
 					</div>
-					<div class="tab-pane" id="my_group" >
-						<div id="mygroup_details"></div>
+					<div class="tab-pane" id="my_group">
+						<table class="table">
+							<thead>
+							  <tr>
+								<th>My Group Details</th>
+							   <th style="text-align:right"><button type="button"  class="btn btn-info btn-sm edit_basic">Edit</button></th>
+							  </tr>
+							</thead>
+							<tbody>
+							  <tr>
+								<td>Group Name</td>
+								<td><?php echo $rowgroup['GroupName']; ?></td>
+							  </tr>
+							  <tr>
+								<td>Budget</td>
+								<td><?php echo $rowgroup['Budget']; ?></td>
+							  </tr>
+							  <tr>
+								<td>Apartment Name</td>
+								<td><?php echo $rowgroup['ApartmentName']; ?></td>
+							  </tr>
+							  <tr>
+								<td>Max Members</td>
+								<td><?php echo $rowgroup['MaxMembers']; ?></td>
+							  </tr>
+							  <tr>
+								<td>Vacancies</td>
+								<td><?php echo $vacancies; ?></td>
+							  </tr>
+							  <tr>
+								<td>Members</td>
+								<td><?php while($row=mysqli_fetch_array($result)){
+									echo '<a href=# class="hover" id="'. $row['EmailId'].'">'.$row["FirstName"].' '.$row["LastName"].'</a></br>';
+								}
+									?>
+								</td>
+							  </tr>
+							</tbody>
+						</table>
 					</div>
 					<!--Data modal to update changes-->
-					<div id="dataModal" class="modal modal-lg fade">
+					<div id="basicdataModal" class="modal modal-lg fade">
 						<div class="modal-dialog">
 							<div class="modal-content">
 								<div class="modal-header">
 									<button type="button" class="close" data-dismiss="modal">&times;</button>
-									<b><h4 id="modal-header" style="float:left;"></h4></b>
+									<b><h4 id="modal-header" style="float:left;">Basic Information</h4></b>
 								</div>
 								<div class="modal-body" id="modal_details">
+									<form method="post" id="basic_form_update" name="basic_form_update">
+									<div class="row">
+										<label class="col-sm-3">First Name</label>  
+									    <div class="col-sm-6"> <input type="text" name="fname" id="fname" class="form-control" /> </div>
+									</div>
+									  <br /> 
+									<div class="row">									  
+									  <label class="col-sm-3">Last Name</label>  
+									  <div class="col-sm-6"><input type="text" name="lname" id="lname" class="form-control" /> </div>  
+									</div>
+									  <br /> 
+									<div class="row">
+									  <label class="col-sm-3">Gender</label>  
+									  <div class="col-sm-6"><select name="gender" id="gender" class="form-control">  
+										   <option value="male">Male</option>  
+										   <option value="female">Female</option> 
+											<option value="other">Other</option>
+									  </select> </div> 
+									</div>
+									  <br /> 
+									<div class="row">
+									  <label class="col-sm-3">Contact Number</label>  
+									  <div class="col-sm-6"><input type="text" name="contactnum" id="contactnum" class="form-control" /> </div> 
+									</div>
+									  <br /> 
+									<div class="row">
+									  <label class="col-sm-3">Major</label>  
+										<div class="col-sm-6"><select  id="majorself" class="form-control" name="majorself">
+											<option value="null"></option>
+											<option value="Computer Science">Computer Science</option>
+											<option value="Computer Engineering">Computer Engineering</option>
+											<option value="Electrical Engineering">Electrical Engineering</option>
+											<option value="Industrial Engineering">Industrial Engineering</option>
+											<option value="Civil Engineering">Civil Engineering</option>
+											<option value="Chemical Engineering">Chemical Engineering</option>
+											<option value="Structural Engineering">Structural Engineering</option>
+											<option value="Bio-Medical Engineering">Bio-Medical Engineering</option>
+											<option value="Mechanical Engineering">Mechanical Engineering</option>
+										</select> </div>
+									</div>
+									  <br />  
+									  <input type="hidden" name="employee_id" id="employee_id" />  
+									  <input type="submit" name="update" id="update" value="Update" class="btn btn-primary update" />  
+									</form>
 								</div>
 								<div class="modal-footer">
 									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -243,73 +374,59 @@
 							</div>
 						</div> 	
 					</div>
-					<?php
-					if(isset($_GET['message'])){
-						$message = $_GET['message'];
-						echo '<div class="alert alert-danger alert-dismissible">'.$message.'<button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button></div>';
-					}
-					?>
+
 				</div>
 			</div>
 		</div>
-		<!--JS and AJAX to edit basic details-->
+		<!--Popovers to show members of my group-->
 		<script>
-			$(document).ready(function(){
-				$('.edit_basic').click(function(){
-					//var email=$_SESSION["emailId"];
-					var email= "vishram@gmail.com";
-					$.ajax({
-						url:"select.php",
-						method: "post",
-						data:{EditBasic: email},
-						success: function(data){
-							var data = $.parseJSON(data);
-							$('#modal_details').html(data.content);
-							$('#modal-header').html('Basic Information');
-							$('#dataModal').modal("show");
+					$(document).ready(function(){
+						$('.hover').popover({
+							title:fetchData,
+							html:true,
+							placement:'right'
+						});
+						
+						function fetchData()
+						{
+							var fetch_data='';
+							var element=$(this);
+							var id=element.attr('id');
+							$.ajax({
+								url:'fetch.php',
+								method:'POST',
+								async:false,
+								data:{emailid:id},
+								success:function(data)
+								{
+									fetch_data=data;
+								}
+							});
+							return fetch_data;
 						}
-					});	
-					$('#dataModal').modal("show");
-				});
-			});
-		</script>
-		<!--JS and AJAX to edit additional details-->
-		<script>
-			$(document).ready(function(){
-				$('.edit_additional').click(function(){
-					//var email=$_SESSION["emailId"];
-					var email= "vishram@gmail.com";
+					});
+				</script>
+			<script>
+				$(document).on('click','.edit_basic' ,function(){
+					//var edit_basic=$_SESSION['emailId'];
+					var edit_basic='vishram@gmail.com';
 					$.ajax({
-						url:"select.php",
-						method: "post",
-						data:{EditAdditional: email},
+						url:"fetch.php",
+						method: "POST",
+						data:{EditBasic:edit_basic},
+						dataType:"json",
 						success: function(data){
-							var data = $.parseJSON(data);
-							$('#modal_details').html(data.content);
-							$('#modal-header').html('Additional Information');
-							$('#dataModal').modal("show");
+							 $('#fname').val(data.fname); 
+							 $('#lname').val(data.lname); 
+							 $('#gender').val(data.gender);  
+							 $('#contactnum').val(data.contactnum);  
+							 $('#majorself').val(data.majorself);    
+							 $('#basicdataModal').modal('show');
 						}
-					});	
-					$('#dataModal').modal("show");
+					});
+					
 				});
-			});
-		</script>
-		<!--JS and AJAX to view my group details-->
-		<script>
-			$(document).ready(function(){
-				$('.view_my_group').click(function(){
-					//var my_group_name=$_SESSION["groupname"];
-					var group= "working";
-					$.ajax({
-						url:"select.php",
-						method: "post",
-						data:{MyGroup: group},
-						success: function(data){
-							$('#mygroup_details').html(data);	
-						}
-					});	
-				});
-			});
-		</script>
+			</script>
+
 	</body>
 </html>
