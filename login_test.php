@@ -8,13 +8,9 @@
 		echo "</br>here</br>";
 		$aptname=$budget="";
 		$groupname = $_POST['groupname'];
-		if(isset($_POST['aptname'])&&$_POST['aptname']!='')
+		if(isset($_POST['aptname']))
 		{
 			$aptname=$_POST['aptname'];
-			echo "apartment set";
-		}
-		else{
-			$aptname="None";
 		}
 		if(isset($_POST['budget']))
 		{

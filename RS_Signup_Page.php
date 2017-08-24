@@ -52,7 +52,8 @@
 				  <div class="form-group">
 						<label class="control-label col-sm-3" for="email">Email Id<span class="text-danger">*</span></label>
 						<div class="col-md-4 col-sm-9">
-								<input type="email" class="form-control" id="email" name="email" required>	 
+								<input type="email" class="form-control" id="email" name="email" required>
+
 						</div>
 					</div>
 					<div class="form-group">
@@ -85,25 +86,22 @@
 						<label class="control-label col-sm-3" for="gender">Gender<span class="text-danger">*</span></label>
 						<div class="col-md-4 col-sm-9">
 							<label class="radio-inline">
-								&nbsp;<input type="radio" name="gender" value="male">Male
+								&nbsp;<input type="radio" name="gender" value="Male" required>Male
 							</label>
 							<label class="radio-inline">
-								<input type="radio" name="gender" value="female">Female
+								<input type="radio" name="gender" value="Female">Female
 							</label>
 							<label class="radio-inline">
-								<input type="radio" name="gender" value="other">Other
+								<input type="radio" name="gender" value="Other">Other
 							</label>
 						</div>
 					</div>
 					
 					<div class="form-group">
-						<label class="control-label col-sm-3" for="contactno">Contact No.</label>
+						<label class="control-label col-sm-3" for="contactno">Contact No.<span class="text-danger">*</span></label>
 						<div class="col-md-8 col-sm-9">
 							<div class="input-group">
-									<input type="tel" class="form-control" name="contactnum" id="contactnum" placeholder="Ex: 9999999999">
-									<div class="col-sm-11"></div><span class="glyphicon glyphicon-question-sign"
-									 aria-hidden="true"  data-container="body" data-toggle="tooltip" data-placement="right" title="Optional! However, there are higher chances of getting contacted when your contact numnber is shared."></span>
-									<!--<small>Your contact details will be shared only on request</small>-->
+									<input type="tel" class="form-control" name="contactnum" id="contactnum" placeholder="Ex: 9999999999" required>
 							</div>
 						</div>
 					</div>
@@ -173,7 +171,7 @@
 					</div>
 
 					<div class="form-group">
-						<label class="control-label col-sm-3" for="budgetself">Budget</label>
+						<label class="control-label col-sm-3" for="budgetself">Budget<span class="text-danger">*</span></label>
 						<div class="col-md-8 col-sm-9">
 							<select  id="budgetself"  class="selectpicker" name="budgetself">
 									<option value="null"></option>
@@ -207,7 +205,7 @@
 					</div>
 
 					<div class="form-group">
-						<label class="control-label col-sm-3" for="roommatesself">Number of Roommates</label>
+						<label class="control-label col-sm-3" for="roommatesself">Number of Roommates<span class="text-danger">*</span></label>
 						<div class="col-md-8 col-sm-9">
 							<select  id="roommatesself" class="selectpicker" name="roommatesself">
 									<option value="null"></option>
@@ -404,5 +402,7 @@
 				$('[data-toggle="tooltip"]').tooltip()
 			})
 		</script>
+		
+
 </body>
 </html>

@@ -3,6 +3,7 @@
 	
 	$email=$_POST['email'];
 	$pwd=$_POST['password'];
+	$hashedPassword = password_hash($pwd, PASSWORD_DEFAULT);
 	$fName=$_POST['firstname'];
 	$lName=$_POST['lastname'];
 	$gender=$_POST['gender'];
@@ -97,7 +98,7 @@
 	
 	
 	$sqluser="insert into user(emailid, password, firstname, lastname, gender, smokingself, drinkingself, foodhabitsself, budget, noofroommates, smokingpreferences, drinkingpreferences, foodhabitspreferences, contactnumber)
-	values('$email', '$pwd', '$fName', '$lName','$gender', '$smokingself', '$drinkingself', '$foodhabitsself', '$budgetself', '$roommatesself', '$smokingpreferences', '$drinkingpreferences', '$foodhabitspreferences', '$contactnum')";
+	values('$email', '$hashedPassword', '$fName', '$lName','$gender', '$smokingself', '$drinkingself', '$foodhabitsself', '$budgetself', '$roommatesself', '$smokingpreferences', '$drinkingpreferences', '$foodhabitspreferences', '$contactnum')";
 	if(!mysqli_query($conn,$sqluser)){
 		echo("Error description: " . mysqli_error($conn));
 	}

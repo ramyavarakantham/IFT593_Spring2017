@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Ram</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+ul.nav-pills {
+	top: 150px;
+	position: fixed;
+}
+
+.jumbotron {
+background-color : grey;
+background-size: cover;
+}
+
+.mainBody{
+background-repeat:round; 
+text-align: center; 
+padding: 50px 0px 0px 0px; 
+z-index: 0;
+}
+
+#topContainer{
+background-color: grey;
+height:400px;
+width:50%;
+background-size:cover;
+}
+
+ #footer {
+ background-color: grey;
+height:30%;
+width:100%;
+ }
+ 
+ #middleContainer{
+ width : 100%;
+  background-color:#B0D1FB;
+ }
+ 
+ .marginTop {
+ 	 	 margin-top:80px;
+ }
+
+</style>
+<!-- <link href="Ramya_index_css.css" rel="stylesheet"> -->
+</head>
+<body data-spy="scroll" data-target="#myScrollspy" data-offset="20" class="mainBody">
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="Ramya_between.html"><span
+							class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a></li>
+					<li><a href="#"><span class="glyphicon glyphicon-user"
+							aria-hidden="true"></span> My Profile</a></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false"><span
+							class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+							Search <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Roommates</a></li>
+							<li><a href="#">Groups</a></li>
+							<li><a href="#">Subleases</a></li>
+						</ul></li>
+					<li><a href="#"><span
+							class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+							Help</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="Ramya_between.html">Welcome, FirstName</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+<!-- Nav Bar Ends Here -->	
+	
+	<div class="container contentContainer" id="topContainer" style="padding-top: 50px; padding-bottom: 35px;">
+		<div class="row" >
+			<div style="margin-top: 15%">
+				 <center>
+						<button type="button" class="btn btn-default" style="width: 30%;height: 40px;">See Profiles</button>
+						<button type="button" class="btn btn-default" style="width: 30%;height: 40px;">See Different groups</button>
+							
+				  </center>
+			
+			</div>
+		</div>
+	</div>
+	
+	 <div class="container contentContainer" id="middleContainer" >
+		<div class="row marginTop">			
+			  	 	 <div class="col-md-4 marginTop">
+ 	 	 <h2><span class="glyphicon glyphicon-music"></span> Feature 1`</h2>
+
+ 	 	 <button class="btn btn-success marginTop">Sign Up!</button>
+ 	 	 	
+ 	 	 </div>
+ 	 	 	
+ 	 	 <div class="col-md-4 marginTop">
+ 	 	 <h2><span class="glyphicon glyphicon-off"></span> Freature 2</h2>
+
+ 	 	 <button class="btn btn-success marginTop">Sign Up!</button>
+ 	 	 	
+ 	 	 </div>
+ 	 	 	
+ 	 	 <div class="col-md-4 marginTop">
+ 	 	 <h2><span class="glyphicon glyphicon-pencil"></span> Freatrure 3</h2>
+
+ 	 	 <button class="btn btn-success marginTop">Sign Up!</button>
+ 	 	 	
+ 	 	 </div>
+		</div>
+	</div>
+	
+	
+	
+	
+	
+	 <div class="container" id="footer">
+
+ <div class="row">
+ 	 	
+ 	 	 <h1 class="center title">Download The App!</h1>
+ 	 	
+ 	 	 <p class="lead center">Really, why should I download this app?</p>
+ 	 	 	
+ 	 	 <p class="center"><img src="appstore.png" class="appstoreImage" />
+ 	 	
+ </div>
+	
+	
+
+ <script>
+ $(".contentContainer").css("min-height",$(window).height());
+ </script>
+
+</body>
+</html>

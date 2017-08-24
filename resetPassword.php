@@ -1,3 +1,42 @@
+<?php
+	if(isset($_GET["token"]) && isset($_GET["email"]))
+	{
+		include("connection.php");
+		//get user with email and token
+		$query_token="select * from user where EmailId='".$_GET['email']."' and resetToken='".$_GET['token']."'";
+		//execute get user query
+		$result_token=mysqli_query($conn, $query_token);
+		//if execution errors
+		if(!$result_token)
+		{
+			echo "get user with token query failed</br>";
+		}
+		//if no execution errors in get user with token
+		else{
+			//number of rows affected-should return 1
+			$num_rows_token=mysqli_affected_rows($conn);
+			if($rows_token==1)
+			{
+				$update_token="update user set resetToken='' where EmailId='".$_GET['email']."'";
+				if(!mysqli_query($conn, $update_token)){
+					echo "udpate user token failed</br>";
+				}
+				else{
+					echo "user token updated</br>";
+				}
+				header("Location: RS_Login.php");
+			}
+			else{
+				echo "check email and click on correct link";
+			}
+		}
+	}
+	else
+	{
+		header("Location: RS_Login.php");
+		exit;
+	}
+?>
 <html>
 	<head>
 		 <meta charset="utf-8">
@@ -35,40 +74,14 @@
 	<body>
 		<?php
 				include("connection.php");
-				SESSION_START();
-				if (isset($_POST['updatepwd_submit']) && !empty($_POST['updatepwd'])&& !empty($_POST['updatepwdretype'])) { 
-					$check_token="select resetToken from user where EmailId='".$_SESSION['user']."'";
-					$result_check_token=mysqli_query($conn, $check_token);
-					$row_check_token=mysqli_fetch_array($result_check_token);
-					if($row_check_token['resetToken']!='')
+				if (isset($_POST['updatepwd_submit']) && !empty($_POST['updatepwd'])) { 
+					$pwd = $_POST["updatepwd"]; 
+					$sql = "Update user set Password='$pwd' where EmailId='$_SESSION['user']'";
+					$result = mysqli_query($conn, $sql);
+					if(mysqli_affected_rows($conn)==1)
 					{
-						$update_token="update user set resetToken='' where EmailId='".$_SESSION['user']."'";
-						if(!mysqli_query($conn, $update_token)){
-							echo "udpate user token failed</br>";
-						}
-						else{
-							echo "user token updated</br>";
-							if($_POST['updatepwd']!=$_POST['updatepwdretype'])
-							{
-								echo "Passwords do not match";
-								exit;
-							}
-							else
-							{
-								$pwd = $_POST["updatepwd"]; 
-								$hashedPassword = password_hash($pwd, PASSWORD_DEFAULT);
-								$sql = "Update user set Password='".$hashedPassword."' where EmailId='".$_SESSION['user']."'";
-								$result = mysqli_query($conn, $sql);
-								if(mysqli_affected_rows($conn)==1)
-								{
-									header("Location: RS_Login.php"); 
-									exit;
-								}
-							}
-						}
-					}
-					else{
-						echo "Breach detected</br>";
+						header("Location: RS_Login.php"); 
+						exit;
 					}
 				}
 		?>
@@ -78,12 +91,8 @@
 				<form class="form-signin" method="post" name="updatepwd_form" id="updatepwd_form" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>">       
 					  <h2 class="form-signin-heading text-info">Create new password</h2>
 					  <div class="form-group">
-						  <label class="sr-only" for="password">Your new password</label>
-						  <input type="password" class="form-control" id="password" name="updatepwd" placeholder="Your new password" required>										 
-					  </div>
-					  <div class="form-group">
-						  <label class="sr-only" for="retype_password">Your new password</label>
-						  <input type="password" class="form-control" id="retype_password" name="updatepwdretype" placeholder="Retype your password" required>										 
+						  <label class="sr-only" for="exampleInputPassword2">Your new password</label>
+						  <input type="password" class="form-control" id="exampleInputPassword2" name="updatepwd" placeholder="Your new password" required>										 
 					  </div>
 					  <div class="form-group">
 					  	  <input  class="btn btn-primary btn-block" type="submit" value="Update" name="updatepwd_submit">
